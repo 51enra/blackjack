@@ -1,14 +1,21 @@
 package com.wilders.blackjack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class Player extends Gamer {
 
 	private boolean askNewCard() {
-		// To Do: Abfrage, ob der Player eine weitere Karte ziehen möchte
-		return false;
+		Scanner s = new Scanner(System.in);
+		System.out.println("Möchtest Du noch eine Karte? (J/N):");
+		char x = s.next().charAt(0);
+
+		if ((x == 'j') || (x == 'J'))
+			return true;
+		else
+			return false;
 	}
 
 	private void setAceValue(List<Card> aceCards) {
@@ -52,8 +59,10 @@ public class Player extends Gamer {
 	}
 
 	public int logic(List<Card> deck) {
+
 		List<Card> hand = this.getHand();
 		List<Card> aceCards = new ArrayList<Card>();
+
 		// Draw initial two cards for the player
 		// Draw first card:
 		hand.add(deck.remove(0));
@@ -65,19 +74,24 @@ public class Player extends Gamer {
 		hand.get(1).setVisibility(true);
 		if (hand.get(1).isAce())
 			aceCards.add(hand.get(1));
+
 		// Show cards and ask for ace value if applicable
 		this.showHand();
 		if (aceCards != null)
 			this.setAceValue(aceCards);
 		aceCards.removeAll(aceCards);
-		// Draw further cards if player wants
+
+		// Draw further cards if player wants it
 		while (this.getTotalValue() < 21) {
 			if (askNewCard()) {
+				int last = hand.size();
 				hand.add(deck.remove(0));
-
+				hand.get(last).setVisibility(true);
+				if (hand.get(last).isAce()) this.setAceValue(Collections.singletonList(hand.get(last)));
+                this.showHand();				
 			}
 		}
-		return 0;
+		return this.getTotalValue();
 	}
 
 	public Player() {
