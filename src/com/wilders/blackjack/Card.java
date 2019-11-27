@@ -2,7 +2,7 @@ package com.wilders.blackjack;
 
 public class Card {
 	
-	private String color; // Karo, Herz, Pik, Kreuz
+	private String color; // diamond, heart, spade, cross
 	private String type; // 2..10, J, Q, K, Ace
 	private int value; // 1...11
 	private boolean visibility;
