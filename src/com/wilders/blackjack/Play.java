@@ -2,6 +2,7 @@ package com.wilders.blackjack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Play {
 
@@ -11,14 +12,15 @@ public class Play {
 		return deck;
 	}
 
-	private static int askAceValue() {
-		// to be done
-		return 1;
-	}
-
 	private static boolean askContinue() {
-		// to be done
-		return false;
+		Scanner s = new Scanner(System.in);
+
+		char x = s.next().charAt(0);
+
+		if ((x == 'j') || (x == 'J'))
+			return true;
+		else
+			return false;
 	}
 
 	public static void main(String[] args) {
@@ -39,7 +41,7 @@ public class Play {
 					// to be done; "Dealer hat verloren"
 				} else {
 					if (playerValue >= dealerValue) {
-                        // to be done - player wins
+						// to be done - player wins
 					} else {
 						// to be done - dealer wins
 					}
