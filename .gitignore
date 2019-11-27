@@ -1,0 +1,5 @@
+#Ignore all .classpath and .project files
+.classpath
+.project
+#Ignore folder bin
+bin/
