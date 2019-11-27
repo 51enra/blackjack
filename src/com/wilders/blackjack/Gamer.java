@@ -26,6 +26,12 @@ public abstract class Gamer {
 	
 	public void showHand() {
 		// To be done
+		System.out.print("Deine Hand: ");
+		for (Card card : this.getHand()) {
+			System.out.print(card.getColor() + " " + card.getType() + " | ");
+		}
+		System.out.println();
+		System.out.println("Gesamtwert (verloren wenn >21): " + this.getVisibleValue());
 	}
 	
 	private int getVisibleValue() {
