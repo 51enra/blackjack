@@ -28,16 +28,6 @@ public abstract class Gamer {
 		this.getHand().clear();
 	}
 
-	public void showHand() {
-		// To be done
-		System.out.print("Deine Hand: ");
-		for (Card card : this.getHand()) {
-			System.out.print(card.getColor() + " " + card.getType() + " | ");
-		}
-		System.out.println();
-		System.out.println("Gesamtwert (verloren wenn >21): " + this.getVisibleValue());
-	}
-
 	private int getVisibleValue() {
 		int visibleValue = 0;
 		for (Card card : hand) {
@@ -50,7 +40,13 @@ public abstract class Gamer {
 	}
 
 	abstract int initialDraw(List<Card> deck);
+	// Zwei erste Karten ziehen
 	
 	abstract int draw(List<Card> deck);
+	// Weitere Karten ziehen
+	
+	abstract void showHand();
+
+	abstract void showHandValue();
 
 }
