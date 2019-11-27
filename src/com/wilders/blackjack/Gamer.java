@@ -25,7 +25,7 @@ public abstract class Gamer {
 	}
 
 	public void cleanHand() {
-		// To be done
+		this.getHand().clear();
 	}
 
 	public void showHand() {
@@ -49,6 +49,8 @@ public abstract class Gamer {
 		return visibleValue;
 	}
 
-	abstract int logic(List<Card> deck);
+	abstract int initialDraw(List<Card> deck);
+	
+	abstract int draw(List<Card> deck);
 
 }

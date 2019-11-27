@@ -85,7 +85,6 @@ public class Player extends Gamer {
 		// System.out.println(aceCards.toString());
 		if (aceCards.size() > 0)
 			this.setAceValue(aceCards);
-		aceCards.removeAll(aceCards);
 
 		// Draw further cards if player wants it
 		while (this.getTotalValue() < 21 && askNewCard()) {
