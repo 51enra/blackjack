@@ -20,8 +20,10 @@ public class Player extends Gamer {
 
 	private void setAceValue(List<Card> aceCards) {
 		Scanner s = new Scanner(System.in);
-		String sInput;
 		char x;
+
+		if ((aceCards == null) || (aceCards.isEmpty()))
+			return;
 
 		// ein oder zwei Karten?
 		if (aceCards.size() == 1) {
@@ -47,11 +49,11 @@ public class Player extends Gamer {
 			System.out.println("Du hast zwei Asse gezogen. Möchtest du beide mit 1 berechnen? (J/N):");
 			x = s.next().charAt(0);
 			if ((x == 'j') || (x == 'J')) {
-//				aceCards.get(0).setValue(1);
-//				aceCards.get(1).setValue(1);
+				aceCards.get(0).setValue(1);
+				aceCards.get(1).setValue(1);
 			} else {
 				// Standard: ein Ass 11 ein Ass 1
-//				aceCards.get(0).setValue(1);
+				aceCards.get(0).setValue(1);
 			}
 
 		}
@@ -88,8 +90,9 @@ public class Player extends Gamer {
 				int last = hand.size();
 				hand.add(deck.remove(0));
 				hand.get(last).setVisibility(true);
-				if (hand.get(last).isAce()) this.setAceValue(Collections.singletonList(hand.get(last)));
-                this.showHand();				
+				if (hand.get(last).isAce())
+					this.setAceValue(Collections.singletonList(hand.get(last)));
+				this.showHand();
 			}
 		}
 		return this.getTotalValue();
