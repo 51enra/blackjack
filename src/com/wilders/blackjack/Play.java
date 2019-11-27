@@ -14,7 +14,7 @@ public class Play {
 
 	private static boolean askContinue() {
 		Scanner s = new Scanner(System.in);
-
+		System.out.println("Möchtest Du noch einmal spielen? (J/N):");
 		char x = s.next().charAt(0);
 
 		if ((x == 'j') || (x == 'J'))
