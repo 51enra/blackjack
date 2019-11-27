@@ -20,6 +20,7 @@ public class Player extends Gamer {
 
 	private void setAceValue(List<Card> aceCards) {
 		Scanner s = new Scanner(System.in);
+		String sInput;
 		char x;
 
 		// ein oder zwei Karten?
@@ -46,11 +47,11 @@ public class Player extends Gamer {
 			System.out.println("Du hast zwei Asse gezogen. Möchtest du beide mit 1 berechnen? (J/N):");
 			x = s.next().charAt(0);
 			if ((x == 'j') || (x == 'J')) {
-				aceCards.get(0).setValue(1);
-				aceCards.get(1).setValue(1);
+//				aceCards.get(0).setValue(1);
+//				aceCards.get(1).setValue(1);
 			} else {
 				// Standard: ein Ass 11 ein Ass 1
-				aceCards.get(0).setValue(1);
+//				aceCards.get(0).setValue(1);
 			}
 
 		}
