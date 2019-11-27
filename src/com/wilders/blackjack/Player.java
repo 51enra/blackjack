@@ -22,6 +22,9 @@ public class Player extends Gamer {
 		Scanner s = new Scanner(System.in);
 		char x;
 
+		if ((aceCards == null) || (aceCards.isEmpty()))
+			return;
+
 		// ein oder zwei Karten?
 		if (aceCards.size() == 1) {
 			// aktuelle Karte betrachten
@@ -89,8 +92,9 @@ public class Player extends Gamer {
 				int last = hand.size();
 				hand.add(deck.remove(0));
 				hand.get(last).setVisibility(true);
-				if (hand.get(last).isAce()) this.setAceValue(Collections.singletonList(hand.get(last)));
-                this.showHand();				
+				if (hand.get(last).isAce())
+					this.setAceValue(Collections.singletonList(hand.get(last)));
+				this.showHand();
 		}
 		return this.getTotalValue();
 	}
