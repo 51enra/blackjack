@@ -16,16 +16,6 @@ public class Play {
 		return 1;
 	}
 
-	private static int playerLogic(Gamer player) {
-		// To be done
-		return 0;
-	}
-
-	private static int dealerLogic(Gamer dealer) {
-		// To be done
-		return 0;
-	}
-
 	private static boolean askContinue() {
 		// to be done
 		return false;
@@ -33,16 +23,16 @@ public class Play {
 
 	public static void main(String[] args) {
 
-		Gamer player = new Gamer();
-		Gamer dealer = new Gamer();
+		Player player = new Player();
+		Dealer dealer = new Dealer();
 
 		do {
 			List deck = initDeck();
-			int playerValue = playerLogic(player);
+			int playerValue = player.logic(deck);
 			if (playerValue > 21) {
 				// to be done
 			} else {
-				int dealerValue = dealerLogic(dealer);
+				int dealerValue = dealer.logic(deck);
 				if (dealerValue > 21) {
 					// to be done; "Dealer hat verloren"
 				} else {

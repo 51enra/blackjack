@@ -3,7 +3,7 @@ package com.wilders.blackjack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Gamer {
+public abstract class Gamer {
 
 	private List<Card> hand = new ArrayList<>();
 
@@ -32,4 +32,7 @@ public class Gamer {
 		// To be done
 		return 0;
 	}
+	
+	abstract int logic(List deck);
+
 }
