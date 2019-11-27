@@ -28,6 +28,8 @@ public class Play {
 
 		do {
 			List deck = initDeck();
+			player.cleanHand();
+			dealer.cleanHand();
 			int playerValue = player.logic(deck);
 			if (playerValue > 21) {
 				// to be done
