@@ -33,6 +33,6 @@ public abstract class Gamer {
 		return 0;
 	}
 	
-	abstract int logic(List deck);
+	abstract int logic(List<Card> deck);
 
 }

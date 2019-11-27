@@ -3,6 +3,7 @@ package com.wilders.blackjack;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Play {
 	
@@ -43,14 +44,15 @@ public class Play {
 		return deck;
 	}
 
-	private static int askAceValue() {
-		// to be done
-		return 1;
-	}
-
 	private static boolean askContinue() {
-		// to be done
-		return false;
+		Scanner s = new Scanner(System.in);
+		System.out.println("Möchtest Du noch einmal spielen? (J/N):");
+		char x = s.next().charAt(0);
+
+		if ((x == 'j') || (x == 'J'))
+			return true;
+		else
+			return false;
 	}
 
 	public static void main(String[] args) {
@@ -60,6 +62,8 @@ public class Play {
 
 		do {
 			List deck = initDeck();
+			player.cleanHand();
+			dealer.cleanHand();
 			int playerValue = player.logic(deck);
 			if (playerValue > 21) {
 				// to be done

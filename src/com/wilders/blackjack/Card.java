@@ -4,8 +4,10 @@ public class Card {
 	
 	private String color; // diamond, heart, spade, cross
 	private String type; // 2..10, J, Q, K, Ace
+
 	private int value; // 1...11
 	private boolean visibility;
+	
 	public String getColor() {
 		return color;
 	}
@@ -29,6 +31,10 @@ public class Card {
 	}
 	public void setVisibility(boolean visibility) {
 		this.visibility = visibility;
+	}
+	
+	public boolean isAce() {
+		return this.getType().equals("Ace");
 	}
 	
 	public Card(String color, String type, int value, boolean visibility) {
