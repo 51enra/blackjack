@@ -32,6 +32,10 @@ public class Card {
 		this.visibility = visibility;
 	}
 	
+	public boolean isAce() {
+		return this.getType().equals("Ace");
+	}
+	
 	public Card(String color, String type, int value, boolean visibility) {
 		super();
 		this.color = color;
