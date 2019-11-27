@@ -28,7 +28,7 @@ public class Play {
 		Dealer dealer = new Dealer();
 
 		do {
-			List deck = Card.initDeck();
+			List deck = initDeck();
 			player.cleanHand();
 			dealer.cleanHand();
 			int playerValue = player.logic(deck);
