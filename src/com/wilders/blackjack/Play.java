@@ -11,11 +11,6 @@ public class Play {
 		return deck;
 	}
 
-	private static int askAceValue() {
-		// to be done
-		return 1;
-	}
-
 	private static boolean askContinue() {
 		// to be done
 		return false;
