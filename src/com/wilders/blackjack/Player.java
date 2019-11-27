@@ -22,6 +22,9 @@ public class Player extends Gamer {
 		Scanner s = new Scanner(System.in);
 		char x;
 
+		if ((aceCards == null) || (aceCards.isEmpty()))
+			return;
+
 		// ein oder zwei Karten?
 		if (aceCards.size() == 1) {
 			// aktuelle Karte betrachten
@@ -67,29 +70,30 @@ public class Player extends Gamer {
 		// Draw first card:
 		hand.add(deck.remove(0));
 		hand.get(0).setVisibility(true);
+		// System.out.println(hand.get(0).getColor()+ " " + hand.get(0).getType());
 		if (hand.get(0).isAce())
 			aceCards.add(hand.get(0));
 		// Draw second card:
 		hand.add(deck.remove(0));
+		// System.out.println(hand.get(1).getColor()+ " " + hand.get(1).getType());
 		hand.get(1).setVisibility(true);
 		if (hand.get(1).isAce())
 			aceCards.add(hand.get(1));
 
 		// Show cards and ask for ace value if applicable
 		this.showHand();
-		if (aceCards != null)
+		// System.out.println(aceCards.toString());
+		if (aceCards.size() > 0)
 			this.setAceValue(aceCards);
-		aceCards.removeAll(aceCards);
 
 		// Draw further cards if player wants it
-		while (this.getTotalValue() < 21) {
-			if (askNewCard()) {
+		while (this.getTotalValue() < 21 && askNewCard()) {
 				int last = hand.size();
 				hand.add(deck.remove(0));
 				hand.get(last).setVisibility(true);
-				if (hand.get(last).isAce()) this.setAceValue(Collections.singletonList(hand.get(last)));
-                this.showHand();				
-			}
+				if (hand.get(last).isAce())
+					this.setAceValue(Collections.singletonList(hand.get(last)));
+				this.showHand();
 		}
 		return this.getTotalValue();
 	}
