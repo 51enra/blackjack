@@ -66,20 +66,20 @@ public class Play {
 			dealer.cleanHand();
 			int playerValue = player.logic(deck);
 			if (playerValue > 21) {
-				// to be done
+				System.out.println("Der Dealer hat gewonnen!");
 			} else {
 				int dealerValue = dealer.logic(deck);
 				if (dealerValue > 21) {
-					// to be done; "Dealer hat verloren"
+					System.out.println("Du hast gewonnen!");
 				} else {
 					if (playerValue >= dealerValue) {
-						// to be done - player wins
+						System.out.println("Du hast gewonnen!");
 					} else {
-						// to be done - dealer wins
+						System.out.println("Der Dealer hat gewonnen!");
 					}
 				}
 			}
 
-		} while (askContinue()); // to be done
+		} while (askContinue()); 
 	}
 }
