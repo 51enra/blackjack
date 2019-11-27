@@ -14,25 +14,35 @@ public abstract class Gamer {
 	public void setHand(List<Card> hand) {
 		this.hand = hand;
 	}
-	
+
 	public int getTotalValue() {
-		// To be done
-		return 0;
+		int totalValule = 0;
+		for (Card card : hand) {
+			totalValule = totalValule + card.getValue();
+		}
+
+		return totalValule;
 	}
-	
+
 	public void cleanHand() {
 		// To be done
 	}
-	
+
 	public void showHand() {
 		// To be done
 	}
-	
+
 	private int getVisibleValue() {
-		// To be done
-		return 0;
+		int visibleValue = 0;
+		for (Card card : hand) {
+			if (card.isVisibility()) {
+				visibleValue = visibleValue + card.getValue();
+			}
+		}
+
+		return visibleValue;
 	}
-	
+
 	abstract int logic(List<Card> deck);
 
 }
