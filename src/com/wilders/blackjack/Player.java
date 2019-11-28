@@ -35,6 +35,8 @@ public class Player extends Gamer {
 			} else {
 				if (this.getTotalValue() < 21) {
 					// Beide Varianten möglich
+					System.out.println("Du hast ein Ass gezogen");
+					System.out.println("Du hast bis jetzt einen Value von : " + (this.getTotalValue() - 11));
 					System.out.println("Möchtest du dass Ass mit 1 berechnen? (J/N):");
 					x = s.next().charAt(0);
 
@@ -61,8 +63,57 @@ public class Player extends Gamer {
 		return;
 	}
 
-	public void showHand() {
-		// To be done
+	public Player() {
+		// super(); --> Check if needed
+		// TODO Auto-generated constructor stub
+	}
+
+	public int draw(List<Card> deck, boolean firstDraw) {
+
+		List<Card> hand = this.getHand();
+
+		if (firstDraw) {
+			List<Card> aceCards = new ArrayList<Card>();
+
+			// Draw initial two cards for the player
+			// Draw first card:
+			hand.add(deck.remove(0));
+			hand.get(0).setVisibility(true);
+			// System.out.println(hand.get(0).getColor()+ " " + hand.get(0).getType());
+			if (hand.get(0).isAce())
+				aceCards.add(hand.get(0));
+			// Draw second card:
+			hand.add(deck.remove(0));
+			// System.out.println(hand.get(1).getColor()+ " " + hand.get(1).getType());
+			hand.get(1).setVisibility(true);
+			if (hand.get(1).isAce())
+				aceCards.add(hand.get(1));
+
+			// Show cards and ask for ace value if applicable
+			this.showHand(false);
+			// System.out.println(aceCards.toString());
+			if (aceCards.size() > 0)
+				this.setAceValue(aceCards);
+			this.showHand(true);
+			this.showHandValue(true);
+		} else {
+			// After player has seen first two cards, draw further cards if player wants it
+			while (this.getTotalValue() < 21 && askNewCard()) {
+				int last = hand.size();
+				hand.add(deck.remove(0));
+				hand.get(last).setVisibility(true);
+				if (hand.get(last).isAce()) {
+					this.showHand(false);
+					this.setAceValue(Collections.singletonList(hand.get(last)));
+				}
+				this.showHand(false);
+				this.showHandValue(false);
+			}	
+		}
+		return this.getTotalValue();
+	}
+
+	public void showHand(boolean firstDraw) {
 		System.out.print("Deine Hand: ");
 		for (Card card : this.getHand()) {
 			System.out.print(card.getColor() + " " + card.getType() + " | ");
@@ -70,61 +121,9 @@ public class Player extends Gamer {
 		System.out.println();
 	}
 
-	public void showHandValue() {
+	public void showHandValue(boolean firstDraw) {
 		System.out.println("Gesamtwert (verloren wenn >21): " + this.getTotalValue());
 	}
 
-	public int initialDraw(List<Card> deck) {
-
-		List<Card> hand = this.getHand();
-		List<Card> aceCards = new ArrayList<Card>();
-
-		// Draw initial two cards for the player
-		// Draw first card:
-		hand.add(deck.remove(0));
-		hand.get(0).setVisibility(true);
-		// System.out.println(hand.get(0).getColor()+ " " + hand.get(0).getType());
-		if (hand.get(0).isAce())
-			aceCards.add(hand.get(0));
-		// Draw second card:
-		hand.add(deck.remove(0));
-		// System.out.println(hand.get(1).getColor()+ " " + hand.get(1).getType());
-		hand.get(1).setVisibility(true);
-		if (hand.get(1).isAce())
-			aceCards.add(hand.get(1));
-
-		// Show cards and ask for ace value if applicable
-		this.showHand();
-		// System.out.println(aceCards.toString());
-		if (aceCards.size() > 0)
-			this.setAceValue(aceCards);
-		this.showHand();
-		this.showHandValue();
-		return this.getTotalValue();
-	}
-	
-
-	public int draw(List<Card> deck) {
-		// After player has seen first two cards, draw further cards if player wants it
-		List<Card> hand = this.getHand();
-
-		while (this.getTotalValue() < 21 && askNewCard()) {
-			int last = hand.size();
-			hand.add(deck.remove(0));
-			hand.get(last).setVisibility(true);
-			if (hand.get(last).isAce()) {
-				this.showHand();
-				this.setAceValue(Collections.singletonList(hand.get(last)));
-			}
-			this.showHand();
-			this.showHandValue();
-		}
-		return this.getTotalValue();
-	}
-
-	public Player() {
-		// super(); --> Check if needed
-		// TODO Auto-generated constructor stub
-	}
 
 }

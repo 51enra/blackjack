@@ -28,7 +28,7 @@ public abstract class Gamer {
 		this.getHand().clear();
 	}
 
-	private int getVisibleValue() {
+	public int getVisibleValue() {
 		int visibleValue = 0;
 		for (Card card : hand) {
 			if (card.isVisibility()) {
@@ -39,14 +39,10 @@ public abstract class Gamer {
 		return visibleValue;
 	}
 
-	abstract int initialDraw(List<Card> deck);
-	// Zwei erste Karten ziehen
-	
-	abstract int draw(List<Card> deck);
-	// Weitere Karten ziehen
-	
-	abstract void showHand();
+	abstract int draw(List<Card> deck, boolean firstDraw);
+		
+	abstract void showHand(boolean firstDraw);
 
-	abstract void showHandValue();
+	abstract void showHandValue(boolean firstDraw);
 
 }
