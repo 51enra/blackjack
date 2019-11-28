@@ -52,18 +52,21 @@ public class Dealer extends Gamer {
 
 	void showHand(boolean firstDraw) {
 		if (firstDraw) {
-			//Anzeige mit versteckter Karte
+			// Anzeige mit versteckter Karte
 			System.out.print("Dealer: ");
-			
-			
-		}
-		else {
-			//Anzeige mit offenen Karten
+
+		} else {
+			// Anzeige mit offenen Karten
 		}
 
 	}
 
 	void showHandValue(boolean firstDraw) {
+		if (firstDraw) {
+			System.out.println("Dealer Value (sichtbar): " + this.getVisibleValue());
+		} else {
+			System.out.println("Dealer Value: " + this.getTotalValue());
+		}
 
 	}
 

@@ -11,7 +11,6 @@ public class Player extends Gamer {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Möchtest Du noch eine Karte? (J/N):");
 		char x = s.next().charAt(0);
-	
 
 		if ((x == 'j') || (x == 'J'))
 			return true;
@@ -37,7 +36,7 @@ public class Player extends Gamer {
 				if (this.getTotalValue() < 21) {
 					// Beide Varianten möglich
 					System.out.println("Du hast ein Ass gezogen");
-					System.out.println("Du hast bis jetzt einen Value von : " + (this.getTotalValue()-11));
+					System.out.println("Du hast bis jetzt einen Value von : " + (this.getTotalValue() - 11));
 					System.out.println("Möchtest du dass Ass mit 1 berechnen? (J/N):");
 					x = s.next().charAt(0);
 
@@ -120,11 +119,11 @@ public class Player extends Gamer {
 
 	@Override
 	void showHandValue(boolean firstDraw) {
-		// TODO Auto-generated method stub
+		System.out.println("Player Value: " + this.getTotalValue());
 
 	}
 
-	// Falls man keine Unterscheidung braucht
+	// Da der Player keine Unterscheidung braucht
 	void showHand() {
 		this.showHand(false);
 	}

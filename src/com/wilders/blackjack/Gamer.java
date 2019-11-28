@@ -28,7 +28,7 @@ public abstract class Gamer {
 		this.getHand().clear();
 	}
 
-	private int getVisibleValue() {
+	public int getVisibleValue() {
 		int visibleValue = 0;
 		for (Card card : hand) {
 			if (card.isVisibility()) {
