@@ -90,10 +90,10 @@ public class Player extends Gamer {
 				aceCards.add(hand.get(1));
 
 			// Show cards and ask for ace value if applicable
-			this.showHand(false);
-			// System.out.println(aceCards.toString());
-			if (aceCards.size() > 0)
+			if (aceCards.size() > 0) {
+				this.showHand(false);
 				this.setAceValue(aceCards);
+			}
 			this.showHand(true);
 			this.showHandValue(true);
 		} else {
@@ -108,7 +108,7 @@ public class Player extends Gamer {
 				}
 				this.showHand(false);
 				this.showHandValue(false);
-			}	
+			}
 		}
 		return this.getTotalValue();
 	}
@@ -124,6 +124,5 @@ public class Player extends Gamer {
 	public void showHandValue(boolean firstDraw) {
 		System.out.println("Gesamtwert (verloren wenn >21): " + this.getTotalValue());
 	}
-
 
 }
