@@ -60,17 +60,17 @@ public class Dealer extends Gamer {
 		for (int i = 0; i < this.getHand().size(); i++) {
 			if (i == 0 && firstDraw) {
 				// Anzeige mit versteckter Karte
-				System.out.print("? ");
+				System.out.print("| ? |");
 
 			} else {
 				// Anzeige mit offenen Karten
-				System.out.print(this.getHand().get(i).getColor() + this.getHand().get(i).getType());
+				System.out.print(this.getHand().get(i).getColor() + " " + this.getHand().get(i).getType());
 			}
 			if (i == (this.getHand().size() - 1)) {
 				// letzte Zeile
-				System.out.println("");
+				System.out.println(" |");
 			} else {
-				System.out.print(", ");
+				System.out.print("| ");
 
 			}
 		}
