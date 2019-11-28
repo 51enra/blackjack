@@ -91,11 +91,11 @@ public class Player extends Gamer {
 
 			// Show cards and ask for ace value if applicable
 			if (aceCards.size() > 0) {
-				this.showHand(false);
+				this.showHand();
 				this.setAceValue(aceCards);
 			}
-			this.showHand(true);
-			this.showHandValue(true);
+			this.showHand();
+			this.showHandValue();
 		} else {
 			// After player has seen first two cards, draw further cards if player wants it
 			while (this.getTotalValue() < 21 && askNewCard()) {
@@ -103,15 +103,24 @@ public class Player extends Gamer {
 				hand.add(deck.remove(0));
 				hand.get(last).setVisibility(true);
 				if (hand.get(last).isAce()) {
-					this.showHand(false);
+					this.showHand();
 					this.setAceValue(Collections.singletonList(hand.get(last)));
 				}
-				this.showHand(false);
-				this.showHandValue(false);
+				this.showHand();
+				this.showHandValue();
 			}
 		}
+		if (this.getTotalValue() == 21) System.out.println("Genau 21 Punkte - keine weiteren Karten!");
 		return this.getTotalValue();
 	}
 
+	@Override
+	public void showHand() {
+		System.out.println();
+//		System.out.println("-----------------------");
+		System.out.println("**** Spieler-Hand: ****");
+//		System.out.println("-----------------------");;
+		super.showHand();
+	}
 
 }

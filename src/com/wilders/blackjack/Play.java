@@ -1,7 +1,5 @@
 package com.wilders.blackjack;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,27 +28,30 @@ public class Play {
 		Dealer dealer = new Dealer();
 
 		do {
-			List deck = Card.initDeck();
+			List<Card> deck = Card.initDeck();
 			player.cleanHand();
 			dealer.cleanHand();
 			int playerValue = player.draw(deck, true); // ersters Mal
 			int dealerValue = dealer.draw(deck, true); // ersters Mal
 			playerValue = player.draw(deck, false); // 2. + ....
 			if (playerValue > 21) {
-				System.out.println("Der Dealer hat gewonnen!");
+				System.out.println("Du bist über 21 - du hast verloren!");
 			} else {
+				player.showHand();
 				dealerValue = dealer.draw(deck, false); // 2. + ....
 				if (dealerValue > 21) {
-					System.out.println("Du hast gewonnen!");
+					System.out.println("Geber über 21 - du hast gewonnen!");
 				} else {
-					if (playerValue >= dealerValue) {
-						System.out.println("Du hast gewonnen!");
+					if (playerValue > dealerValue) {
+						System.out.println("Du hast die meisten Punkte - gewonnen!");
+					} else if (playerValue == dealerValue) {
+						System.out.println("Gleiche Punktzahl - unentschieden!");
 					} else {
-						System.out.println("Der Dealer hat gewonnen!");
+						System.out.println("Der Geber hat die meisten Punkte - du hast verloren!");
 					}
 				}
 			}
-
+			System.out.println();
 		} while (askContinue());
 	}
 }

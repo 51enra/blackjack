@@ -29,8 +29,11 @@ public class Dealer extends Gamer {
 			// Karten auf die Hand nehmen
 			this.getHand().add(newCard1);
 			this.getHand().add(newCard2);
-			this.showHand(true);
-			this.showHandValue(true);
+			this.showHand();
+			this.showHandValue();
+			
+			// Nach der ersten Runde sind alle Karten sichtbar
+			newCard1.setVisibility(true);			
 		} else {
 
 			// if the total is 16 or under, he must take a new card.
@@ -45,11 +48,20 @@ public class Dealer extends Gamer {
 				this.getHand().add(newCard);
 
 			}
-			this.showHand(false);
-			this.showHandValue(false);
+			this.showHand();
+			this.showHandValue();
 		}
 
 		return this.getTotalValue();
+	}
+	
+	@Override
+	public void showHand() {
+		System.out.println();
+//		System.out.println("-----------------------");
+		System.out.println("****  Geber-Hand:  ****");
+//		System.out.println("-----------------------");
+		super.showHand();
 	}
 
 }

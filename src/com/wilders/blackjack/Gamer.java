@@ -41,95 +41,64 @@ public abstract class Gamer {
 
 	abstract int draw(List<Card> deck, boolean firstDraw);
 
-	void showHand(boolean firstDraw) {
+	
+	void showHand() {
 
 		// oberste Zeile
-		System.out.print("        ");
+//		System.out.print("        ");
 		for (int i = 0; i < this.getHand().size(); i++) {
 			System.out.print("----- ");
 		}
 		System.out.println("");
 
-		if (this instanceof Dealer) {
-			// 2.Zeile
-			System.out.print("Dealer: ");
+		// 2.Zeile
+//		System.out.print("        ");
+		for (int i = 0; i < this.getHand().size(); i++) {
 
-			for (int i = 0; i < this.getHand().size(); i++) {
+			if (!this.getHand().get(i).isVisibility()) {
 
-				if (i == 0 && firstDraw) {
-					// Anzeige mit versteckter Karte
-					System.out.print("| * | ");
+				// Anzeige mit versteckter Karte
+				System.out.print("| * | ");
 
-				} else {
-					// Anzeige mit offenen Karten
-					System.out.print("| " + this.getHand().get(i).getColor() + " | ");
-				}
-
+			} else {
+				// Anzeige mit offenen Karten
+				System.out.print("| " + this.getHand().get(i).getColor() + " | ");
 			}
-			System.out.println("");
 
-			// 3. Zeile
-			for (int i = 0; i < this.getHand().size(); i++) {
-				if (i == 0)
-					System.out.print("        ");
-				if (((i == 0)) && firstDraw) {
-					// Anzeige mit versteckter Karte
-					System.out.print("| * | ");
-
-				} else {
-					// Anzeige mit offenen Karten
-					if (this.getHand().get(i).getType().equals("10"))
-						System.out.print("|" + this.getHand().get(i).getType() + " | ");
-					else
-						System.out.print("| " + this.getHand().get(i).getType() + " | ");
-				}
-
-			}
-			System.out.println("");
-
-		} else {
-			// 2.Zeile
-			System.out.print("Player: ");
-			for (Card card : this.getHand()) {
-				System.out.print("| " + card.getColor() + " | ");
-			}
-			System.out.println("");
-			// 3.Zeile
-			for (int i = 0; i < this.getHand().size(); i++) {
-				if (i == 0) {
-					if (this.getHand().get(i).getType().equals("10"))
-						System.out.print("        |" + this.getHand().get(i).getType() + " | ");
-					else
-						System.out.print("        | " + this.getHand().get(i).getType() + " | ");
-				} else {
-					if (this.getHand().get(i).getType().equals("10"))
-						System.out.print("|" + this.getHand().get(i).getType() + " | ");
-					else
-						System.out.print("| " + this.getHand().get(i).getType() + " | ");
-				}
-			}
-			System.out.println();
 		}
+		System.out.println("");
+
+		// 3. Zeile
+//		System.out.print("        ");
+		for (int i = 0; i < this.getHand().size(); i++) {
+
+			if (!this.getHand().get(i).isVisibility()) {
+				// Anzeige mit versteckter Karte
+				System.out.print("| * | ");
+			} else {
+				// Anzeige mit offenen Karten
+				if (this.getHand().get(i).getType().equals("10"))
+					System.out.print("|" + this.getHand().get(i).getType() + " | ");
+				else
+					System.out.print("| " + this.getHand().get(i).getType() + " | ");
+			}
+		}
+		System.out.println("");
 
 		// UNTERSTE Zeile
-		System.out.print("        ");
+//		System.out.print("        ");
 		for (int i = 0; i < this.getHand().size(); i++) {
 			System.out.print("----- ");
 		}
 		System.out.println();
-
 	}
 
-	void showHandValue(boolean firstDraw) {
-		if (this instanceof Dealer) {
-			if (firstDraw) {
-				System.out.println("Dealer Value (sichtbar): " + this.getVisibleValue());
+	void showHandValue() {
+			if (this.getVisibleValue() != this.getTotalValue()) {
+				System.out.println("Gesamtwert (sichtbar): " + this.getVisibleValue());
 			} else {
-				System.out.println("Dealer Value: " + this.getTotalValue());
+				System.out.println("Gesamtwert (verloren wenn >21): " + this.getTotalValue());
 			}
-		} else {
-			System.out.println("Gesamtwert (verloren wenn >21): " + this.getTotalValue());
-		}
 	}
 
 }
