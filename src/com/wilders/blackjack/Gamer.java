@@ -102,7 +102,10 @@ public abstract class Gamer {
 					else
 						System.out.print("        | " + this.getHand().get(i).getType() + " | ");
 				} else {
-					System.out.print("| " + this.getHand().get(i).getType() + " | ");
+					if (this.getHand().get(i).getType().equals("10"))
+						System.out.print("|" + this.getHand().get(i).getType() + " | ");
+					else
+						System.out.print("| " + this.getHand().get(i).getType() + " | ");
 				}
 			}
 			System.out.println();

@@ -64,6 +64,8 @@ public class Card {
 		// heart "\u2665"
 		// spade "\u2660"
 		// cross "\u2663"
+		
+		
 		for (int i = 2; i <= 10; i++) {
 			deck.add(new Card("\u2666", Integer.toString(i), i, false));
 			deck.add(new Card("\u2665", Integer.toString(i), i, false));

@@ -6,19 +6,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Play {
-	
-	
 
 	private static boolean askContinue() {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Möchtest Du noch einmal spielen? (J/N):");
 		char x = s.next().charAt(0);
-				
-		if ((x == 'j') || (x == 'J'))
+
+		if ((x == 'j') || (x == 'J')) {
+			System.out.println();
+			System.out.println();
+			System.out.println();
 			return true;
-		else
+		} else {
+			System.out.println("Auf Wiedersehen!!!!");
 			return false;
-				
+		}
+
 	}
 
 	public static void main(String[] args) {
@@ -30,13 +33,13 @@ public class Play {
 			List deck = Card.initDeck();
 			player.cleanHand();
 			dealer.cleanHand();
-			int playerValue = player.draw(deck, true); //ersters Mal
-			int dealerValue = dealer.draw(deck,true); //ersters Mal
-			playerValue = player.draw(deck, false); //2. + ....
+			int playerValue = player.draw(deck, true); // ersters Mal
+			int dealerValue = dealer.draw(deck, true); // ersters Mal
+			playerValue = player.draw(deck, false); // 2. + ....
 			if (playerValue > 21) {
 				System.out.println("Der Dealer hat gewonnen!");
 			} else {
-				dealerValue = dealer.draw(deck,false);  //2. + ....
+				dealerValue = dealer.draw(deck, false); // 2. + ....
 				if (dealerValue > 21) {
 					System.out.println("Du hast gewonnen!");
 				} else {
@@ -48,6 +51,6 @@ public class Play {
 				}
 			}
 
-	} while (askContinue()); 
+		} while (askContinue());
 	}
 }
