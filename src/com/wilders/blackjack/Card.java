@@ -45,7 +45,7 @@ public class Card {
 	}
 
 	public boolean isAce() {
-		return this.getType().equals("Ace");
+		return this.getType().equals("A");
 	}
 
 	private Card(String color, String type, int value, boolean visibility) {
@@ -74,22 +74,22 @@ public class Card {
 		deck.add(new Card("\u2666", "J", 10, false));
 		deck.add(new Card("\u2666", "Q", 10, false));
 		deck.add(new Card("\u2666", "K", 10, false));
-		deck.add(new Card("\u2666", "Ace", 11, false));
+		deck.add(new Card("\u2666", "A", 11, false));
 				
 		deck.add(new Card("\u2665", "J", 10, false));
 		deck.add(new Card("\u2665", "Q", 10, false));
 		deck.add(new Card("\u2665", "K", 10, false));
-		deck.add(new Card("\u2665", "Ace", 11, false));
+		deck.add(new Card("\u2665", "A", 11, false));
 		
 		deck.add(new Card("\u2660", "J", 10, false));
 		deck.add(new Card("\u2660", "Q", 10, false));
 		deck.add(new Card("\u2660", "K", 10, false));
-		deck.add(new Card("\u2660", "Ace", 11, false));
+		deck.add(new Card("\u2660", "A", 11, false));
 						
 		deck.add(new Card("\u2663", "J", 10, false));
 		deck.add(new Card("\u2663", "Q", 10, false));
 		deck.add(new Card("\u2663", "K", 10, false));
-		deck.add(new Card("\u2663", "Ace", 11, false));
+		deck.add(new Card("\u2663", "A", 11, false));
 
 		//mix
 		Collections.shuffle(deck);

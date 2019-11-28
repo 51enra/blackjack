@@ -113,16 +113,5 @@ public class Player extends Gamer {
 		return this.getTotalValue();
 	}
 
-	public void showHand(boolean firstDraw) {
-		System.out.print("Deine Hand: ");
-		for (Card card : this.getHand()) {
-			System.out.print(card.getColor() + " " + card.getType() + " | ");
-		}
-		System.out.println();
-	}
-
-	public void showHandValue(boolean firstDraw) {
-		System.out.println("Gesamtwert (verloren wenn >21): " + this.getTotalValue());
-	}
 
 }

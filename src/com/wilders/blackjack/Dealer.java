@@ -54,36 +54,6 @@ public class Dealer extends Gamer {
 		return this.getTotalValue();
 	}
 
-	void showHand(boolean firstDraw) {
-		System.out.print("Dealer: ");
 
-		for (int i = 0; i < this.getHand().size(); i++) {
-			if (i == 0 && firstDraw) {
-				// Anzeige mit versteckter Karte
-				System.out.print("| ? |");
-
-			} else {
-				// Anzeige mit offenen Karten
-				System.out.print(this.getHand().get(i).getColor() + " " + this.getHand().get(i).getType());
-			}
-			if (i == (this.getHand().size() - 1)) {
-				// letzte Zeile
-				System.out.println(" |");
-			} else {
-				System.out.print("| ");
-
-			}
-		}
-
-	}
-
-	void showHandValue(boolean firstDraw) {
-		if (firstDraw) {
-			System.out.println("Dealer Value (sichtbar): " + this.getVisibleValue());
-		} else {
-			System.out.println("Dealer Value: " + this.getTotalValue());
-		}
-
-	}
 
 }
