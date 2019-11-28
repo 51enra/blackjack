@@ -29,34 +29,50 @@ public class Dealer extends Gamer {
 			// Karten auf die Hand nehmen
 			this.getHand().add(newCard1);
 			this.getHand().add(newCard2);
+			this.showHand(true);
+			this.showHandValue(true);
 		} else {
-			if (this.getTotalValue() >= 17)
-				return getTotalValue();
+			if (this.getTotalValue() > 17) {
 
-			// if the total is 16 or under, he must take a new card.
-			while (this.getTotalValue() < 16) {
-				Card newCard = deck.remove(0);
-				newCard.setVisibility(true);
-				// if the dealer has an ace, and counting it as 11 would bring the total to 17
-				// or more (but not over 21),
-				// the dealer must count the ace as 11 and stop.
-				if (newCard.isAce() && ((this.getTotalValue() + newCard.getValue()) > 21))
-					newCard.setValue(1);
-				this.getHand().add(newCard);
-				this.showHand(false);
-				this.showHandValue(false);
+				// if the total is 16 or under, he must take a new card.
+				while (this.getTotalValue() < 16) {
+					Card newCard = deck.remove(0);
+					newCard.setVisibility(true);
+					// if the dealer has an ace, and counting it as 11 would bring the total to 17
+					// or more (but not over 21),
+					// the dealer must count the ace as 11 and stop.
+					if (newCard.isAce() && ((this.getTotalValue() + newCard.getValue()) > 21))
+						newCard.setValue(1);
+					this.getHand().add(newCard);
+
+				}
 			}
+			this.showHand(false);
+			this.showHandValue(false);
 		}
+
 		return this.getTotalValue();
 	}
 
 	void showHand(boolean firstDraw) {
-		if (firstDraw) {
-			// Anzeige mit versteckter Karte
-			System.out.print("Dealer: ");
+		System.out.print("Dealer: ");
 
-		} else {
-			// Anzeige mit offenen Karten
+		for (int i = 0; i < this.getHand().size(); i++) {
+			if (i == 0 && firstDraw) {
+				// Anzeige mit versteckter Karte
+				System.out.print("? ");
+
+			} else {
+				// Anzeige mit offenen Karten
+				System.out.print(this.getHand().get(i).getColor() + this.getHand().get(i).getType());
+			}
+			if (i == (this.getHand().size() - 1)) {
+				// letzte Zeile
+				System.out.println("");
+			} else {
+				System.out.print(", ");
+
+			}
 		}
 
 	}
