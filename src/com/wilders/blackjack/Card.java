@@ -16,7 +16,7 @@ public class Card {
 		return color;
 	}
 
-	public void setColor(String color) {
+	private void setColor(String color) {
 		this.color = color;
 	}
 
@@ -24,7 +24,7 @@ public class Card {
 		return type;
 	}
 
-	public void setType(String type) {
+	private void setType(String type) {
 		this.type = type;
 	}
 
@@ -48,7 +48,7 @@ public class Card {
 		return this.getType().equals("Ace");
 	}
 
-	public Card(String color, String type, int value, boolean visibility) {
+	private Card(String color, String type, int value, boolean visibility) {
 		super();
 		this.color = color;
 		this.type = type;
