@@ -11,7 +11,7 @@ public class Player extends Gamer {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Möchtest Du noch eine Karte? (J/N):");
 		char x = s.next().charAt(0);
-		s.close();
+	
 
 		if ((x == 'j') || (x == 'J'))
 			return true;

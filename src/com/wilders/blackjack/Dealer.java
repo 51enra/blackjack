@@ -51,6 +51,15 @@ public class Dealer extends Gamer {
 	}
 
 	void showHand(boolean firstDraw) {
+		if (firstDraw) {
+			//Anzeige mit versteckter Karte
+			System.out.print("Dealer: ");
+			
+			
+		}
+		else {
+			//Anzeige mit offenen Karten
+		}
 
 	}
 
