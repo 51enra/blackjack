@@ -81,19 +81,19 @@ public class Player extends Gamer {
 			aceCards.add(hand.get(1));
 
 		// Show cards and ask for ace value if applicable
-		this.showHand();
+		this.showHand(false);
 		// System.out.println(aceCards.toString());
 		if (aceCards.size() > 0)
 			this.setAceValue(aceCards);
 
 		// Draw further cards if player wants it
 		while (this.getTotalValue() < 21 && askNewCard()) {
-				int last = hand.size();
-				hand.add(deck.remove(0));
-				hand.get(last).setVisibility(true);
-				if (hand.get(last).isAce())
-					this.setAceValue(Collections.singletonList(hand.get(last)));
-				this.showHand();
+			int last = hand.size();
+			hand.add(deck.remove(0));
+			hand.get(last).setVisibility(true);
+			if (hand.get(last).isAce())
+				this.setAceValue(Collections.singletonList(hand.get(last)));
+			this.showHand();
 		}
 		return this.getTotalValue();
 	}
@@ -101,6 +101,29 @@ public class Player extends Gamer {
 	public Player() {
 		// super(); --> Check if needed
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	int draw(List<Card> deck, boolean firstDraw) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	void showHand(boolean firstDraw) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	void showHandValue(boolean firstDraw) {
+		// TODO Auto-generated method stub
+
+	}
+
+	// Falls man keine Unterscheidung braucht
+	void showHand() {
+		this.showHand(false);
 	}
 
 }

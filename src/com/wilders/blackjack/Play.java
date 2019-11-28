@@ -28,14 +28,16 @@ public class Play {
 		Dealer dealer = new Dealer();
 
 		do {
-			List deck = initDeck();
+			List deck = Card.initDeck();
 			player.cleanHand();
 			dealer.cleanHand();
-			int playerValue = player.logic(deck);
+			int playerValue = player.draw(deck, true); //ersters Mal
+			int dealerValue = dealer.draw(deck,true); //ersters Mal
+			playerValue = player.draw(deck, false); //2. + ....
 			if (playerValue > 21) {
 				System.out.println("Der Dealer hat gewonnen!");
 			} else {
-				int dealerValue = dealer.logic(deck);
+				dealerValue = dealer.draw(deck,false);  //2. + ....
 				if (dealerValue > 21) {
 					System.out.println("Du hast gewonnen!");
 				} else {
