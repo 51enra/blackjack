@@ -61,7 +61,20 @@ public class Player extends Gamer {
 		return;
 	}
 
-	public int logic(List<Card> deck) {
+	public void showHand() {
+		// To be done
+		System.out.print("Deine Hand: ");
+		for (Card card : this.getHand()) {
+			System.out.print(card.getColor() + " " + card.getType() + " | ");
+		}
+		System.out.println();
+	}
+
+	public void showHandValue() {
+		System.out.println("Gesamtwert (verloren wenn >21): " + this.getTotalValue());
+	}
+
+	public int initialDraw(List<Card> deck) {
 
 		List<Card> hand = this.getHand();
 		List<Card> aceCards = new ArrayList<Card>();
@@ -85,15 +98,26 @@ public class Player extends Gamer {
 		// System.out.println(aceCards.toString());
 		if (aceCards.size() > 0)
 			this.setAceValue(aceCards);
+		this.showHand();
+		this.showHandValue();
+		return this.getTotalValue();
+	}
+	
 
-		// Draw further cards if player wants it
+	public int draw(List<Card> deck) {
+		// After player has seen first two cards, draw further cards if player wants it
+		List<Card> hand = this.getHand();
+
 		while (this.getTotalValue() < 21 && askNewCard()) {
-				int last = hand.size();
-				hand.add(deck.remove(0));
-				hand.get(last).setVisibility(true);
-				if (hand.get(last).isAce())
-					this.setAceValue(Collections.singletonList(hand.get(last)));
+			int last = hand.size();
+			hand.add(deck.remove(0));
+			hand.get(last).setVisibility(true);
+			if (hand.get(last).isAce()) {
 				this.showHand();
+				this.setAceValue(Collections.singletonList(hand.get(last)));
+			}
+			this.showHand();
+			this.showHandValue();
 		}
 		return this.getTotalValue();
 	}
