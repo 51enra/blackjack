@@ -19,7 +19,7 @@ public class Play {
 			return true;
 		else
 			return false;
-		
+				
 	}
 
 	public static void main(String[] args) {
@@ -49,6 +49,6 @@ public class Play {
 				}
 			}
 
-		} while (askContinue()); 
+	} while (askContinue()); 
 	}
 }
